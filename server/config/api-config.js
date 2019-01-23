@@ -23,5 +23,9 @@ app.use((err, req, res, next)=> {
   res.status(err.status || 500);
   res.render('error');
 });
+// index route
+app.get('/', (req,res) => {
+  res.send('hello world');
+});
 
 module.exports = app;
