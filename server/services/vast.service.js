@@ -18,10 +18,9 @@ function createVast(vastURL, position, hideUI) {
 function getVastUrlById(id) {
     return new Promise((resolve,reject) => {
         vastModel.getVastUrlById(id).then((data)=>{
-            resolve(data);
-        }).catch((err) => {
-            reject(err);
-        })
+            resolve(data)} ).catch((err) => {
+                reject(err);
+            })
     });
 }
 

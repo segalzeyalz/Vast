@@ -10,15 +10,16 @@ router.get('/fetch_vast', function (req, res, next) {
     if (id == parseInt(id)){
         vastService.getVastUrlById(id).then((data) => {
             res.json(data);
-        }).catch((err) => {res.send(err);
+        }).catch((err) => {
+            res.send(err);
         })
-    }else{
+    } else {
             res.send("Must use integer");
         }
     });
 
 router.post('/create_vast', function (req, res, next) {
-    let {vastURL, position, hideUI} = req.body;
+    let { vastURL, position, hideUI } = req.body;
     position=position? position:`bottom_right`
     hideUI=hideUI? hideUI:0
     vastService.createVast(vastURL, position, hideUI).then((data) => {
