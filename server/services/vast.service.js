@@ -2,7 +2,7 @@ var vastModel = require("../model/vast-model");
 
 var vastService = {
     createVast: createVast,
-    getVastById:getVastById
+    getVastUrlById:getVastUrlById
 }
 
 function createVast(vastURL, position, hideUI) {
@@ -15,9 +15,9 @@ function createVast(vastURL, position, hideUI) {
     })
 }
 
-function getVastById(id) {
+function getVastUrlById(id) {
     return new Promise((resolve,reject) => {
-        vastModel.getVastById(id).then((data)=>{
+        vastModel.getVastUrlById(id).then((data)=>{
             resolve(data);
         }).catch((err) => {
             reject(err);

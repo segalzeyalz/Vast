@@ -3,13 +3,13 @@ var dbFunc = require('../config/db-function');
 
 var vastModel = {
     createVast:createVast,
-    getVastById:getVastById
+    getVastUrlById:getVastUrlById
 }
 function createVast (vastURL, position, hideUI){
     //Set deafult values
     position = position || `bottom_right`;
     hideUI = hideUI? 1:0;
-    db.query(`insert into vasts (vastURL, position, hideUI) values (${vastURL}, ${position}, ${hideUI})`,(error,rows,fields)=>{
+    db.query(`insert into vasts (vast_url, position, hide_ui) values (${vastURL}, ${position}, ${hideUI})`,(error,rows,fields)=>{
         if(error) {
             dbFunc.connectionRelease;
             reject(error);
@@ -20,9 +20,10 @@ function createVast (vastURL, position, hideUI){
    });
 };
 
-function getVastById(id){
+function getVastUrlById(id){
+    return new Promise((resolve,reject) => {
     //Get the vast by id
-    db.query(`SELECT vastURL FROM vasts WHERE id =${id})`,(error,rows,fields)=>{
+    db.query(`SELECT vast_url FROM vasts WHERE id =${id}`,(error,rows,fields)=>{
         if(error) {
             dbFunc.connectionRelease;
             reject(error);
@@ -31,7 +32,7 @@ function getVastById(id){
             resolve(rows[0]);
         }
    });
-
+});
     //then get the XML
 
 }
