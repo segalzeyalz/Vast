@@ -3,7 +3,7 @@ var dbFunc = require('../config/db-function');
 
 var vastModel = {
     createVast:createVast,
-    getVastXML:getVastXML
+    getVastById:getVastById
 }
 function createVast (vastURL, position, hideUI){
     //Set deafult values
@@ -20,9 +20,19 @@ function createVast (vastURL, position, hideUI){
    });
 };
 
-function getVastXML(id){
-    //Should return XML according to id
-    return id;
-}
+function getVastById(id){
+    //Get the vast by id
+    db.query(`SELECT vastURL FROM vasts WHERE id =${id})`,(error,rows,fields)=>{
+        if(error) {
+            dbFunc.connectionRelease;
+            reject(error);
+        } else {
+            dbFunc.connectionRelease;
+            resolve(rows[0]);
+        }
+   });
 
+    //then get the XML
+
+}
 module.exports = vastModel;
