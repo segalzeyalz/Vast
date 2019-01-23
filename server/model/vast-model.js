@@ -5,8 +5,10 @@ var vastModel = {
     createVast:createVast,
     getVastXML:getVastXML
 }
-function createVast (){
-    
+function createVast (vastURL, position, hideUI){
+    //Set deafult values
+    position = position || `bottom_right`;
+    hideUI = hideUI? 1:0;
 }
 
 
