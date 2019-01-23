@@ -9,7 +9,9 @@ function createVast (vastURL, position, hideUI){
     //Set deafult values
     position = position || `bottom_right`;
     hideUI = hideUI? 1:0;
-    db.query(`insert into vasts (vast_url, position, hide_ui) values (${vastURL}, ${position}, ${hideUI})`,(error,rows,fields)=>{
+    return new Promise((resolve,reject) => {
+
+    db.query(`insert into vasts (vast_url, position, hide_ui) values ('${vastURL}', '${position}', ${hideUI})`,(error,rows,fields)=>{
         if(error) {
             dbFunc.connectionRelease;
             reject(error);
@@ -18,6 +20,7 @@ function createVast (vastURL, position, hideUI){
             resolve(rows);
         }
    });
+});  
 };
 
 function getVastUrlById(id){
