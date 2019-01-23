@@ -11,8 +11,8 @@ router.get('/fetch_vast', function (req, res, next) {
       })
     });
 
-router.post('/addVast', function (req, res, next) {
-        
+router.post('/create_vast', function (req, res, next) {
+        console.log(`body: ${req.body}`)
 });
 
 module.exports = router;

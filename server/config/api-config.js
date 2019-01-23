@@ -1,11 +1,11 @@
+var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var api = require('../routes/api');
 var path  = require('path');
 var db = require('./database');
 
-var port = process.env.PORT || 3000;
-
+app.use(bodyParser.json());
 app.use('/api',api)
 
 // catch 404 and forward to error handler
@@ -27,10 +27,6 @@ app.use((err, req, res, next)=> {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-// index route
-app.get('/', (req,res) => {
-  res.send('hello world');
 });
 
 module.exports = app;
