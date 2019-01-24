@@ -3,6 +3,7 @@ var vastModel = require("../model/vast-model");
 var vastService = {
     createVast: createVast,
     getVastById: getVastById,
+    getVastXMLById:getVastXMLById,
     getVasts:getVasts
 }
 
@@ -15,16 +16,19 @@ function createVast(vastURL, position, hideUI) {
         })
     })
 }
-
 function getVastById(id) {
     return new Promise((resolve, reject) => {
         vastModel.getVastById(id).then((data) => {
-            let {
-                vast_url,
-                position,
-                hideUI,
-                id
-            } = data;
+            resolve(data)
+        }).catch((err) => {
+            reject(err);
+        })
+    });
+}
+function getVastXMLById(id) {
+    return new Promise((resolve, reject) => {
+        vastModel.getVastById(id).then((data) => {
+            let { vast_url, position, hideUI, id } = data;
             //only if exist
             if (id) {
                 //Enable 'strange' parameters. mysql uses 1 and 0 instead of true and false on the defiinition on my machine

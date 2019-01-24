@@ -3,11 +3,11 @@ var router = express.Router();var xml = require('xml');
 
 const vastService = require('../../services/vast.service');
 
-router.get('/fetch_vast', function (req, res, next) {
+router.get('/fetch_vastXML', function (req, res, next) {
     //get id of vast
     let { id } = req.query;
     if (id == parseInt(id)){
-        vastService.getVastById(id).then((data) => {
+        vastService.getVastXMLById(id).then((data) => {
             res.json(data)
         }).catch((err) => {
             res.send(err);
@@ -25,6 +25,20 @@ router.get('/fetch_vasts', function (req, res, next) {
             res.send(err);
         })
     });
+
+    router.get('/fetch_vast', function (req, res, next) {
+        //get id of vast
+        let { id } = req.query;
+        if (id == parseInt(id)){
+            vastService.getVastById(id).then((data) => {
+                res.json(data)
+            }).catch((err) => {
+                res.send(err);
+            })
+        } else {
+                res.send("Must use integer");
+            }
+        });
 
 router.post('/create_vast', function (req, res, next) {
     let { vastURL, position, hideUI } = req.body;
