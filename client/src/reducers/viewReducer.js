@@ -1,4 +1,4 @@
-import { GET_VASTS, GET_VAST_BY_ID } from './../constants/actionType';
+import { GET_VASTS, GET_VAST_BY_ID, GET_VAST_XML_BY_ID, CHANGE_VIEW } from './../actions';
 
 const initialState = {
     vasts:[],
@@ -16,6 +16,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 vasts:newArr
+            }
+        case CHANGE_VIEW:
+            return {
+                ...state,
+                vast_show:action.id
             }
         }
         return state;

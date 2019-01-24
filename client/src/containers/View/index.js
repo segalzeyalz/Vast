@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import * as actionType from './../../constants/actionType';
+import * as actionType from './../../actions';
 import { connect } from 'react-redux';
 import { Route, Switch, Link } from 'react-router-dom'
-import ViewId from './../../components/ViewId'
 import PropTypes from 'prop-types';
 import CSS from './View.css';
     
@@ -19,9 +18,6 @@ class View extends Component {
                 <Link to={`/vast/${elem.id}`}>
                   <h1>{elem.fruit}</h1>
               </Link>) }
-              <Switch>   
-                <Route path={`${this.props.match.url}/View/:id`} component={ViewId} />
-                </Switch>
             </div>
         )
     }

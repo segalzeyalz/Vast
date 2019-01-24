@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { ADD_VAST, GET_VASTS, GET_VAST_BY_ID, GET_VAST_XML_BY_ID } from './../constants/actionType'
+
+export const ADD_VAST = 'ADD_VAST';
+export const GET_VASTS = 'GET_VASTS';
+export const GET_VAST_BY_ID = 'GET_VAST_BY_ID';
+export const GET_VAST_XML_BY_ID = 'GET_VAST_XML_BY_ID';
+export const CHANGE_VIEW = 'CHANGE_VIEW';
 
 const ROOT_URL = 'http://localhost:9890/api/';
 let url;
@@ -27,5 +32,13 @@ export function fetchVastXML(id) {
     return {
         type: GET_VAST_XML_BY_ID,
         payload: request
+    };
+}
+
+
+export function chnageVast(id) {
+    return {
+        type: CHANGE_VIEW,
+        id: id
     };
 }

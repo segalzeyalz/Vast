@@ -1,4 +1,4 @@
-import { ADD_VAST } from './../constants/actionType';
+import { ADD_VAST } from './../actions';
 
 const initialState = {
 }
