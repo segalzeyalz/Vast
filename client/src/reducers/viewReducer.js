@@ -1,7 +1,8 @@
-import { GET_VAST_BY_ID } from './../constants/actionTypes';
+import { GET_VAST_BY_ID } from './../constants/actionType';
 
 const initialState = {
-},
+    vast_show:''
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {

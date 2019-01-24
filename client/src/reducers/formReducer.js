@@ -1,7 +1,7 @@
-import { ADD_VAST } from './../constants/actionTypes';
+import { ADD_VAST } from './../constants/actionType';
 
 const initialState = {
-},
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
