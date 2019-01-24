@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 const Header = () => {
   return <Card>
             <h1 className={CSS.title}>
-              Costume Layout
+              Vasts
             </h1>
           </Card>
 };

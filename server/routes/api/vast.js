@@ -1,6 +1,5 @@
 var express = require('express')
 var router = express.Router();var xml = require('xml');
-var xml = require('xml');
 
 const vastService = require('../../services/vast.service');
 
@@ -16,6 +15,15 @@ router.get('/fetch_vast', function (req, res, next) {
     } else {
             res.send("Must use integer");
         }
+    });
+
+router.get('/fetch_vasts', function (req, res, next) {
+    //get id of vast
+        vastService.getVasts().then((data) => {
+            res.json(data)
+        }).catch((err) => {
+            res.send(err);
+        })
     });
 
 router.post('/create_vast', function (req, res, next) {
