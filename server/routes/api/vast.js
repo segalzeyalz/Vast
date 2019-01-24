@@ -8,8 +8,8 @@ router.get('/fetch_vast', function (req, res, next) {
     //get id of vast
     let { id } = req.query;
     if (id == parseInt(id)){
-        vastService.getVastUrlById(id).then((data) => {
-            res.json(data);
+        vastService.getVastById(id).then((data) => {
+            res.json(data)
         }).catch((err) => {
             res.send(err);
         })
