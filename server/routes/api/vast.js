@@ -1,9 +1,10 @@
 var express = require('express')
 var router = express.Router();var xml = require('xml');
+var cors = require('cors')
 
 const vastService = require('../../services/vast.service');
 
-router.get('/fetch_vastXML', function (req, res, next) {
+router.get('/fetch_vastXML' ,function (req, res, next) {
     //get id of vast
     let { id } = req.query;
     if (id == parseInt(id)){
@@ -17,8 +18,9 @@ router.get('/fetch_vastXML', function (req, res, next) {
         }
     });
 
-router.get('/fetch_vasts', function (req, res, next) {
+router.get('/fetch_vasts' , function (req, res, next) {
     //get id of vast
+    console.log("req")
         vastService.getVasts().then((data) => {
             res.json(data)
         }).catch((err) => {

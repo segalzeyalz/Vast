@@ -1,3 +1,4 @@
+import fetch from 'cross-fetch'
 import axios from 'axios';
 
 export const ADD_VAST = 'ADD_VAST';
@@ -6,12 +7,13 @@ export const GET_VAST_BY_ID = 'GET_VAST_BY_ID';
 export const GET_VAST_XML_BY_ID = 'GET_VAST_XML_BY_ID';
 export const CHANGE_VIEW = 'CHANGE_VIEW';
 
+
 const ROOT_URL = 'http://localhost:9890/api/';
 let url;
-let request;
+var request;
 export function fetchVasts() {
     url = `${ROOT_URL}/fetch_vasts`;
-    request = axios.get(url);
+    request = axios.get(url)
     return {
         type: GET_VASTS,
         payload: request
@@ -40,5 +42,14 @@ export function chnageVast(id) {
     return {
         type: CHANGE_VIEW,
         id: id
+    };
+}
+
+export function addVast(id) {
+    url = `${ROOT_URL}/fetch_vastXML?id=${id}`;
+    request = axios.post(url);
+    return {
+        type: GET_VAST_XML_BY_ID,
+        payload: request
     };
 }

@@ -12,10 +12,10 @@ const reducer = (state = initialState, action) => {
                 ...state
             }
         case GET_VASTS:
-            let newArr = [{fruit: "banana",id:1}, {fruit: "dfsdf",id:2}, {fruit:"sefdsef",id:3}]
+        console.log(action.payload.data)
             return {
                 ...state,
-                vasts:newArr
+                vasts:[...action.payload.data]
             }
         case CHANGE_VIEW:
             return {
