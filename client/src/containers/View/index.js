@@ -5,8 +5,7 @@ import { Route, Switch, Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { bindActionCreators } from "redux";
 import { fetchVasts, fetchVast } from "../../actions";
-
-
+import Card from '@material-ui/core/Card';
 
 import CSS from './View.css';
     
@@ -20,10 +19,16 @@ class View extends Component {
         return (
             <div className={CSS.Container}>
               {this.props.vasts.map((elem)=> {
-                  console.log(elem)
-                  return (<Link to={`/vast/${elem.id}`}>
-                    <h1>{elem.id}</h1>
-                </Link>  )
+                  return (
+                    <Card>
+                        <h1>id:{elem.id}</h1>
+                        <p>
+                        vast_url: <Link to={`/vast/${elem.id}`}>{elem.vast_url}</Link> <br/>
+                        hide_ui: {elem.hide_ui==1? 'true':'false'}<br/>
+                        position : {elem.position}<br/>
+                        </p>
+                    </Card>
+                 )
             }
                 ) }
             </div>

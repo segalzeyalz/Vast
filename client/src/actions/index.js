@@ -1,11 +1,10 @@
 import fetch from 'cross-fetch'
 import axios from 'axios';
-
+export const CHANGE_VAST = 'CHANGE_VAST';
 export const ADD_VAST = 'ADD_VAST';
 export const GET_VASTS = 'GET_VASTS';
 export const GET_VAST_BY_ID = 'GET_VAST_BY_ID';
 export const GET_VAST_XML_BY_ID = 'GET_VAST_XML_BY_ID';
-export const CHANGE_VIEW = 'CHANGE_VIEW';
 
 
 const ROOT_URL = 'http://localhost:9890/api/';
@@ -19,37 +18,39 @@ export function fetchVasts() {
         payload: request
     };
 }
-export function fetchVast(id) {
-    url = `${ROOT_URL}/fetch_vast?id=${id}`;
-    request = axios.get(url);
+export function fetchVast(data) {
+    
     return {
         type: GET_VAST_BY_ID,
-        payload: request
+        payload: data
     };
 }
 
 export function fetchVastXML(id) {
     url = `${ROOT_URL}/fetch_vastXML?id=${id}`;
     request = axios.get(url);
+
     return {
         type: GET_VAST_XML_BY_ID,
         payload: request
     };
 }
 
-
-export function chnageVast(id) {
+export function addVast(vastURL, position, hideUi) {
+    url = `${ROOT_URL}/create_vast`;
+    request = axios.post(url, {
+        vastURL:vastURL, position:position, hideUI:hideUi
+    });
     return {
-        type: CHANGE_VIEW,
-        id: id
+        type: ADD_VAST,
+        payload: request
     };
 }
 
-export function addVast(id) {
-    url = `${ROOT_URL}/fetch_vastXML?id=${id}`;
-    request = axios.post(url);
+export function changeVast(name, value){
     return {
-        type: GET_VAST_XML_BY_ID,
-        payload: request
+        type: CHANGE_VAST,
+        name: name,
+        value: value
     };
 }
