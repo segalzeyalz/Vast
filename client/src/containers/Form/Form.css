@@ -1,0 +1,11 @@
+:local(.Container){
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+}
+:local(.MarginBtn){
+    margin-top: 22px !important;
+}
