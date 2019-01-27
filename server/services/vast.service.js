@@ -34,6 +34,8 @@ function getVastXMLById(id) {
                 //Enable 'strange' parameters. mysql uses 1 and 0 instead of true and false on the defiinition on my machine
                 hideUI = (hideUI === true || hideUI === 'true' || hideUI === 1) ? true : false;
                 let vastUrl = `${data.vast_url}&position=${position}&hideUI=${hideUI}&videoId=${id}`
+
+                //Show vast as a XML
                 resolve(
                     `<VAST version="2.0">
                     <Ad id="ComboGuard">
